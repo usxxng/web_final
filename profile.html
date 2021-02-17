@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PSYWORLD</title>
+<link href="css/mystyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+var ss = $(this).attr("href");
+$('html, body').animate({scrollTop:ss});
+return false;
+});
+});
+</script>
+<link rel="fornasetti" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script type="text/javascript">
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 400; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 400; // 스크롤 시작위치 
+    var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 10; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+     var stmnStartPoint, stmnEndPoint; 
+     stmnStartPoint = parseInt(document.getElementById('SIDEMENU').style.top, 10); 
+     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+     if (stmnStartPoint != stmnEndPoint) { 
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+      document.getElementById('SIDEMENU').style.top = parseInt(document.getElementById('SIDEMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+      stmnRefreshTimer = stmnScrollSpeed; 
+      }
+     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+     } 
+    function InitializeStaticMenu() {
+     document.getElementById('SIDEMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. 
+     document.getElementById('SIDEMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+     RefreshStaticMenu();
+     }
+   </script>
+</head>
+<body onload="InitializeStaticMenu();">
+        <div id=SIDEMENU>
+                <a href=index.html><img src=images/psy_sidemenu.png></a>
+            </div>
+            <div id=subwrap>
+            <div id=subheader>
+                    <div id=logo>
+                        <a href=0 class=mov><img src="images/head_final2.jpg"></a>
+                    </div>
+                    <div id=menu>
+                        <ul><li>
+                            <a href=index.html>INTRO</a>
+                            <a href=profile.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALBUM</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M/V</a>
+                            <a href=exhibitions>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCERT</a>
+                            <a href=reservation>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEWS</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACTS</a>
+                        </li></ul>
+                    </div>
+                </div>
+        <div id=profile>
+            <h1>Profile</h1>
+            <img src = "images/psy.jpg" width=28%>
+            <div id=text>
+            <h2><a href="https://people.search.naver.com/search.naver?where=nexearch&query=%EC%8B%B8%EC%9D%B4&sm=tab_etc&ie=utf8&key=PeopleService&os=94576" target="_blank">박재상(싸이)</a><sub> &nbsp;&nbsp;가수, 음악PD</sub></h2>
+            <p>출생<strong> 1977년 12월 31일</strong></p>
+            <p>소속사<strong> 피네이션, SB프로젝트, 유니버설 리퍼블릭 레코드</strong></p>
+            <p>데뷔<strong> 2001년 1집 앨범 [Psy From The Psycho World]</strong></p>
+            <p>수상<strong> 2016년 제5회 가온차트 K-POP 어워드 올해의 가수상 음원부문 12월</strong></p>
+            <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2014년 제3회 가온차트 K-POP 어워드 올해의 가수상 음원부문 4월</strong></p>
+            <p>경력<strong> 2013.04 아시아나항공 홍보대사</strong></p>
+            <p>사이트 <strong><a href="https://channels.vlive.tv/F90C5" target="_blank">&nbsp;&nbsp;V LIVE</a>
+                <a href="https://twitter.com/psy_oppa" target="_blank">&nbsp;트위터</a>
+                <a href="https://www.facebook.com/officialpsy" target="_blank">&nbsp;페이스북</a>
+                <a href="https://www.youtube.com/user/officialpsy" target="_blank">&nbsp;유튜브</a>
+                <a href="https://www.instagram.com/42psy42/" target="_blank">&nbsp;인스타그램</a></strong></p>
+        </div>
+        </div>
+    </div>
+    </body>
+    </html>

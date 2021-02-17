@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PSYWORLD</title>
+<link href="css/mystyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+var ss = $(this).attr("href");
+$('html, body').animate({scrollTop:ss});
+return false;
+});
+});
+</script>
+<link rel="fornasetti" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script type="text/javascript">
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 400; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 400; // 스크롤 시작위치 
+    var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 10; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+     var stmnStartPoint, stmnEndPoint; 
+     stmnStartPoint = parseInt(document.getElementById('SIDEMENU').style.top, 10); 
+     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+     if (stmnStartPoint != stmnEndPoint) { 
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+      document.getElementById('SIDEMENU').style.top = parseInt(document.getElementById('SIDEMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+      stmnRefreshTimer = stmnScrollSpeed; 
+      }
+     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+     } 
+    function InitializeStaticMenu() {
+     document.getElementById('SIDEMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. 
+     document.getElementById('SIDEMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+     RefreshStaticMenu();
+     }
+   </script>
+</head>
+<body onload="InitializeStaticMenu();">
+        <div id=SIDEMENU>
+                <a href=index.html><img src=images/psy_sidemenu.png></a>
+            </div>
+            <div id=conwrap>
+            <div id=subheader>
+                    <div id=logo>
+                        <a href=0 class=mov><img src="images/head_final2.jpg"></a>
+                    </div>
+                    <div id=menu>
+                        <ul><li>
+                            <a href=final.html>INTRO</a>
+                            <a href=profile.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALBUM</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M/V</a>
+                            <a href=concert.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCERT</a>
+                            <a href=news.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEWS</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACTS</a>
+                        </li></ul>
+                    </div>
+                </div>
+        <div id=concert>
+            <h1>콘서트 정보</h1>
+            <div id=show><img src=images/psy_show.jpg width=80%></div>
+            <div id=con_text><h3>콘서트명 &nbsp; 싸이 흠뻑쇼 SUMMER SWAG 2019<br>
+                기간 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2019.07.13 ~ 2019.08.24</h3><br>
+                <h3>Reservation</h3><br>
+                <div id=form1>
+                        <form>
+                                <strong>이름</strong>&nbsp;&nbsp;<input type="text" id="userid"><br>
+                                <strong>받는 주소</strong>&nbsp;&nbsp;<input type="email" id="mail"><br>
+                                <strong>지역</strong><input type="radio" name="area" value="e">서울
+                                <input type="radio" name="area" value="f">수원
+                                <input type="radio" name="area" value="g">인천
+                                <input type="radio" name="area" value="h">광주
+                                <input type="radio" name="area" value="i">대전
+                                <input type="radio" name="area" value="j">대구
+                                <input type="radio" name="area" value="k">부산<br>
+                                <strong>날짜 선택</strong><input type="radio" name="gender" value="m">금요일
+                                    <input type="radio" name="gender" value="f">토요일
+                                    <input type="radio" name="gender" value="e">일요일<br>
+                                    <strong>좌석 선택</strong><br><input type="checkbox" name="class" value="a"> 스탠딩 SR석(132,000원)
+                                    <input type="checkbox" name="class" value="b"> 스탠딩 R석(121,000원)<br>
+                                    <input type="checkbox" name="class" value="c"> 지정 SR석(132,000원)
+                                    <input type="checkbox" name="class" value="d"> 지정 R석(121,000원)<br><br>
+                                <input type = "submit" value="예매" onClick="alert('예매 완료')">
+                                <input type = "reset" value="취소"><br><br>
+                            </form>
+                        </div>
+            </div>
+
+            
+            
+    </div>
+    </body>
+    </html>

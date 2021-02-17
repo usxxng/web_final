@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PSYWORLD</title>
+<link href="css/mystyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+var ss = $(this).attr("href");
+$('html, body').animate({scrollTop:ss});
+return false;
+});
+});
+</script>
+<link rel="final" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script type="text/javascript">
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 400; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 400; // 스크롤 시작위치 
+    var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 10; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+     var stmnStartPoint, stmnEndPoint; 
+     stmnStartPoint = parseInt(document.getElementById('SIDEMENU').style.top, 10); 
+     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+     if (stmnStartPoint != stmnEndPoint) { 
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+      document.getElementById('SIDEMENU').style.top = parseInt(document.getElementById('SIDEMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+      stmnRefreshTimer = stmnScrollSpeed; 
+      }
+     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+     } 
+    function InitializeStaticMenu() {
+     document.getElementById('SIDEMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. 
+     document.getElementById('SIDEMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+     RefreshStaticMenu();
+     }
+   </script>
+</head>
+<body onload="InitializeStaticMenu();">
+        <div id=SIDEMENU>
+                <a href=index.html><img src=images/psy_sidemenu.png></a>
+            </div>
+            <div id=artwrap>
+            <div id=subheader>
+                    <div id=logo>
+                        <a href=0 class=mov><img src="images/head_final2.jpg"></a>
+                    </div>
+                    <div id=menu>
+                        <ul><li>
+                            <a href=index.html>INTRO</a>
+                            <a href=profile.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALBUM</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M/V</a>
+                            <a href=concert.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCERT</a>
+                            <a href=news.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEWS</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACTS</a>
+                        </li></ul>
+                    </div>
+                </div>
+        <div id=news>
+            <div class=article>
+                    <h1>PSY NEWS</h1><br>
+                    <a href="http://www.munhwa.com/news/view.html?no=20190521MW144252959242" target="_blank">
+                    <div class=aimg>
+                            <img src=images/news1.jpg width="60%">
+                                </div>
+                    <strong>싸이, 올여름 9번째 앨범으로 컴백
+                    By 문화일보 on May 21, 2019</strong><br><br>
+                        지난 1월 피네이션을 설립한 이후로는 첫 앨범이다. 
+                        앞서 싸이는 SNS를 통해 “만약 정규를 낸다면 9집인데 일단 이름 추천을 받아보겠습니다”라고 해 새 앨범 발표를 예고한 바 있다. 
+                        정규 9집의 신곡은 여름...<br><br><br><br><br><br><br>
+                    </a>
+
+                    <a href="http://www.areyou.co.kr/news/articleView.html?idxno=44635" target="_blank">
+                    <div class=aimg>
+                    <img src=images/psy_show.jpg width="60%">
+                        </div>    
+                    <strong>'2019 싸이 흠뻑쇼' 정보 공개… 예매ㆍ공연 일정은?
+                    By 아유경제 on May 20, 2019</strong><br><br>
+                        #pnation #피네이션' 등의 해시태그를 달고 2019 싸이 흠뻑쇼 일정을 공유했다. 
+                        게시된 글에 따르면, 올해 흠뻑쇼 예매는 오는 6월 11일 오후 8시 인터파크에서 시작된다. 
+                        이는 지난해보다 일주일 정도 빠른...<br><br><br><br><br>
+                    </a>
+
+
+                    <a href="http://www.xportsnews.com/?ac=article_view&entry_id=1069218" target="_blank">
+                    <div class=aimg>
+                    <img src=images/article1.jpg width="60%">
+                        </div>
+                    <strong>싸이, 연예기획사 'P NATION' 설립…"선수들의 놀이터 만들겠다"
+                    By 엑스포츠뉴스 on January 24, 2019</strong><br><br><br>
+                        가수 싸이가 회사 피네이션(PNATION)을 설립했다. 
+                        싸이는 24일 자신의 인스타그램에 "안녕하세요 싸이입니다. 회사를 설립하였습니다. 
+                        회사명은 P NATION입니다"라는 글과 함께 회사 로고를 공개했다. 이어 "지난 19년간...<br><br><br><br><br><br><br>
+                    </a>
+                    
+                    <a href="http://www.newstomato.com/ReadNews.aspx?no=839650" target="_blank">
+                    <div class=aimg>
+                    <img src=images/article2.jpg width="85%">
+                        </div>
+                    <strong> 싸이 '강남스타일', 빌보드 '21세기 위대한 뮤비' 12위
+                    By 뉴스토마토 on August 3, 2018</strong><br><br><br>
+                    싸이의 뮤직비디오는 12위에 이름을 올렸다.
+                    빌보드는 "풍자적인 댄스 트랙 '강남스타일'이 세계를 폭풍처럼 휩쓸어 최초로 10억뷰를 넘은 뮤직비디오가 된 지 
+                    5년이 지났다는 게 믿기지 않는다"며 "뮤비는 한국...<br><br><br><br><br>
+                </a>
+                    
+                <a href="https://www.insight.co.kr/news/228792" target="_blank">
+                <div class=aimg>
+                        <img src=images/article3.jpg width="80%">
+                            </div>
+                   <strong>어제(22일) 대학 축제를 한순간에 '흠뻑쇼'로 바꿔버린 싸이 무대
+                    By 인사이트 on May 23, 2019</strong><br><br><br>
+                        가수 싸이가 대학 축제에 등장해 무대를 뒤집어 놓았다.
+                        지난 22일 경기도 수원시 성균관대학교 자연과학 캠퍼스에서는 '2019년 대동제'가 개최됐다.
+                        이날 축제의 서막을 알린 첫 초청 가수는 '글로벌 스타' 싸이였다....
+                    </a>
+                    </div>
+                
+                        </div>
+            
+    </div>
+    </body>
+    </html>

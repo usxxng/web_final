@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PSYWORLD</title>
+<link href="css/mystyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+var ss = $(this).attr("href");
+$('html, body').animate({scrollTop:ss});
+return false;
+});
+});
+</script>
+<link rel="final" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<script type="text/javascript">
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 400; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 400; // 스크롤 시작위치 
+    var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 8; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+     var stmnStartPoint, stmnEndPoint; 
+     stmnStartPoint = parseInt(document.getElementById('SIDEMENU').style.top, 10); 
+     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+     if (stmnStartPoint != stmnEndPoint) { 
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+      document.getElementById('SIDEMENU').style.top = parseInt(document.getElementById('SIDEMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+      stmnRefreshTimer = stmnScrollSpeed; 
+      }
+     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+     } 
+    function InitializeStaticMenu() {
+     document.getElementById('SIDEMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. 
+     document.getElementById('SIDEMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+     RefreshStaticMenu();
+     }
+   </script>
+</head>
+<body onload="InitializeStaticMenu();">
+        <div id=SIDEMENU>
+                <a href=index.html><img src=images/psy_sidemenu.png></a>
+            </div>
+    <div id=wrap>
+        <div id=header>
+            <div id=logo>
+                <a href=0 class=mov><img src="images/head_final2.jpg"></a>
+            </div>
+            <div id=menu>
+                <ul><li>
+                    <a href=0 class=mov href="#1">INTRO</a>
+                    <a href=580 class=mov href="#2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE</a>
+                    <a href=1160 class=mov href="#3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALBUM</a>
+                    <a href=1740 class=mov href="#4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M/V</a>
+                    <a href=2580 class=mov href="#5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCERT</a>
+                    <a href=3165 class=mov href="#6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEWS</a>
+                    <a href=3750 class=mov href="#7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACTS</a>
+                </li></ul>
+            </div>
+        </div>
+        <div id=intro>
+            <img src="images/psyworld.jpg">
+        </div>
+        <div id=menu1>
+            <img src = "images/profile.png" usemap=#cover>
+            <map name=cover>
+                <area shape="rect" href=profile.html coords = "830,160,1200,580">
+            </map>
+        </div>
+        <div id=menu2>
+                <div class=album><a href=album1.html><img src = "images/4jip.jpg" width = 50%></a></div>
+                <div class=album><a href=album2.html><img src = "images/5jip.jpg" width = 50%></a></div>
+                <div class=album><a href=album3.html><img src = "images/6jip.png" width = 50%></a></div>
+                <div class=album><a href=album4.html><img src = "images/6.5jip.jpg" width = 50%></a></div>
+                <div class=album><a href=album5.html><img src = "images/7jip.jpg" width = 50%></a></div>
+                <div class=album><a href=album6.html><img src = "images/8jip.png" width = 50%></a></div>
+        </div>
+        <div id=menu3>
+                <h1 id=mv>PSY - GANGNAM STYLE</h1>
+                <video controls poster=images/gangnam.jpg width = "800" height = "452" loop>
+                    <source src="images/gangnamstyle_mv.webm" type="video/webm">
+                    <source src="images/gangnamstyle_mv.mp4" type="video/mp4">
+                    <source src="images/gangnamstyle_mv.ogg" type="video/ogg">
+                    브라우저에서 동영상 파일을 지원하지 않습니다.
+                </video>
+        </div>
+        <div id=menu4>
+                <img src = "images/summer_swags.png" usemap=#cover2>
+                <map name=cover2>
+                        <area shape="rect" href=concert.html coords = "864,446,1129,520">
+                    </map>
+        </div>
+        <div id=menu5>
+                <img src = "images/bknews.png" usemap=#cover3>
+                <map name=cover3>
+                        <area shape="rect" href=news.html coords = "383,182,822,431">
+                    </map>
+        </div>
+        <div id=menu6>
+            <img src = "images/contact.png">
+        </div>
+
+    </div>
+</body>
+</html>

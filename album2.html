@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PSYWORLD</title>
+<link href="css/mystyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+var ss = $(this).attr("href");
+$('html, body').animate({scrollTop:ss});
+return false;
+});
+});
+</script>
+<link rel="fornasetti" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script type="text/javascript">
+    var stmnLEFT = 10; // 오른쪽 여백 
+    var stmnGAP1 = 0; // 위쪽 여백 
+    var stmnGAP2 = 400; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
+    var stmnBASE = 400; // 스크롤 시작위치 
+    var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+    var stmnScrollSpeed = 10; //스크롤 속도 (클수록 느림)
+    var stmnTimer; 
+    
+    function RefreshStaticMenu() { 
+     var stmnStartPoint, stmnEndPoint; 
+     stmnStartPoint = parseInt(document.getElementById('SIDEMENU').style.top, 10); 
+     stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
+     if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
+     if (stmnStartPoint != stmnEndPoint) { 
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
+      document.getElementById('SIDEMENU').style.top = parseInt(document.getElementById('SIDEMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
+      stmnRefreshTimer = stmnScrollSpeed; 
+      }
+     stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
+     } 
+    function InitializeStaticMenu() {
+     document.getElementById('SIDEMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. 
+     document.getElementById('SIDEMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
+     RefreshStaticMenu();
+     }
+   </script>
+</head>
+<body onload="InitializeStaticMenu();">
+        <div id=SIDEMENU>
+                <a href=index.html><img src=images/psy_sidemenu.png></a>
+            </div>
+            <div id=subwrap>
+            <div id=subheader>
+                    <div id=logo>
+                        <a href=0 class=mov><img src="images/head_final2.jpg"></a>
+                    </div>
+                    <div id=menu>
+                        <ul><li>
+                            <a href=index.html>INTRO</a>
+                            <a href=profile.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALBUM</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M/V</a>
+                            <a href=concert.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONCERT</a>
+                            <a href=news.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NEWS</a>
+                            <a href=warning.html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTACTS</a>
+                        </li></ul>
+                    </div>
+                </div>
+        <div class="albums">
+            <h1>5집 PSYFIVE</h1>
+            <div id=album1><img src=images/5jip.jpg width=70%></div>
+            <div id=album_text><h3>아티스트  &nbsp; 싸이 (PSY)<br>
+                장르 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 댄스<br>
+                발매 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2010.10.20<br>
+                배급 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; YG PLUS<br><br>
+                </h3>
+                <h3>곡</h3>
+                1 &nbsp;&nbsp; 싸군 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7 &nbsp;&nbsp; 설레인다<br>
+                2 &nbsp;&nbsp; <strong>(TITLE)</strong> RIGHT NOW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 &nbsp;&nbsp; 서울의 밤거리 (Feat. YDG)<br>
+                3 &nbsp;&nbsp; 오늘밤새&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9 &nbsp;&nbsp; 그래서 그랬어 (Feat. 정엽)<br>
+                4 &nbsp;&nbsp; 내 눈에는 (Feat. 이재훈)&nbsp;&nbsp;&nbsp;10 &nbsp;&nbsp; 미치도록<br>
+                5 &nbsp;&nbsp; Thank You (Feat. 서인영)&nbsp;&nbsp;11 &nbsp;&nbsp; 솔직히 까고말해<br>
+                6 &nbsp;&nbsp; 예술이야&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12 &nbsp;&nbsp; 나의 WANNA BE<br><br><br>
+        
+
+                <div id = ex><a href=index.html>← Previous</a>
+                </div>
+            </div>
+
+            
+            
+    </div>
+    </body>
+    </html>
